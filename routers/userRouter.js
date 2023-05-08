@@ -48,9 +48,22 @@ router.get("/", async (req,res) =>{
     // const appointmentTime = appointment.Time
     return res.json(users)
 })
+
+
 router.get("/:id", async(req,res) =>{
     const id = req.params.id
 
+    console.log(id)
+    const user = users.find(el => {
+        return el.Id === id
+    })
 
+    if(!user){
+        return res.sendStatus(404)
+    }
+
+    return res.json(user)
 })
+
+
 module.exports = router
