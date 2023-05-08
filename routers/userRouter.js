@@ -1,14 +1,13 @@
 const router = require("express").Router()
 
-router.get("/", async (req,res) =>{
-    
-    const users = [{
-        Id: "1",
-        Name: "Veljko",
-        LastName: "Skrbic",
-        PhoneNr: "0623687594",
-        Mail: "veljko@gmail.com",
-        Role: "Customer"
+
+const users = [{
+    Id: "1",
+    Name: "Veljko",
+    LastName: "Skrbic",
+    PhoneNr: "0623687594",
+    Mail: "veljko@gmail.com",
+    Role: "Customer"
     },
     {
         Id: "2",
@@ -25,12 +24,33 @@ router.get("/", async (req,res) =>{
         PhoneNr: "966232365",
         mail: "una@gmail.com",
         Role: "Barber"
+    },
+    {
+        Id: "4",
+        Name: "Milan",
+        LastName: "Skrbic",
+        PhoneNr: "031932155",
+        mail: "milan@gmail.com",
+        Role: "Barber"
+    },
+    {
+        Id: "5",
+        Name: "Snezana",
+        LastName: "Skrbic",
+        PhoneNr: "07041911191",
+        mail: "snezana@gmail.com",
+        Role: "Customer"
     }
 ]
 
+router.get("/", async (req,res) =>{
+    
     // const appointmentTime = appointment.Time
-
     return res.json(users)
 })
+router.get("/:id", async(req,res) =>{
+    const id = req.params.id
 
+
+})
 module.exports = router
