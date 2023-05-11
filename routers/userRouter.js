@@ -1,13 +1,14 @@
 const router = require("express").Router()
 
 
-const users = [{
-    Id: "1",
-    Name: "Veljko",
-    LastName: "Skrbic",
-    PhoneNr: "0623687594",
-    Mail: "veljko@gmail.com",
-    Role: "Customer"
+const users = [
+    {
+        Id: "1",
+        Name: "Veljko",
+        LastName: "Skrbic",
+        PhoneNr: "0623687594",
+        Mail: "veljko@gmail.com",
+        Role: "Customer"
     },
     {
         Id: "2",
@@ -48,9 +49,21 @@ router.get("/", async (req,res) =>{
     // const appointmentTime = appointment.Time
     return res.json(users)
 })
+
+
 router.get("/:id", async(req,res) =>{
     const id = req.params.id
 
+    const user = users.find(el => {
+        return el.Id === id
+    })
 
+    if(!user){
+        return res.sendStatus(404)
+    }
+
+    return res.json(user)
 })
+
+
 module.exports = router
